@@ -13,12 +13,12 @@ import { createApiKey } from "@/helpers/create-api-key"
 import { useRouter } from "next/navigation"
 import { revokeApiKey } from "@/helpers/revoke-api-key"
 
-interface ApiKeyOrtionsProps {
+interface ApiKeyOptionsProps {
   apiKeyId: string
   apiKeyKey: string
 }
 
-const ApiKeyOptions: FC<ApiKeyOrtionsProps> = ({ apiKeyId, apiKeyKey }) => {
+const ApiKeyOptions: FC<ApiKeyOptionsProps> = ({ apiKeyKey }) => {
   const [isCreatingNew, setIsCreatingNew] = useState<boolean>(false)
   const [isRevoking, setIsRevoking] = useState<boolean>(false)
   const router = useRouter()
@@ -27,7 +27,7 @@ const ApiKeyOptions: FC<ApiKeyOrtionsProps> = ({ apiKeyId, apiKeyKey }) => {
     setIsCreatingNew(true)
 
     try {
-      await revokeApiKey({ key: apiKeyId })
+      await revokeApiKey()
       await createApiKey()
       router.refresh()
     } catch (error) {
@@ -44,7 +44,7 @@ const ApiKeyOptions: FC<ApiKeyOrtionsProps> = ({ apiKeyId, apiKeyKey }) => {
   const revokeCurrentApiKey = async () => {
     setIsRevoking(true)
     try {
-      await revokeApiKey({ key: apiKeyId })
+      await revokeApiKey()
       router.refresh()
     } catch (error) {
       toast({

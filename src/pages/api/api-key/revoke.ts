@@ -45,7 +45,7 @@ const handler = async (
 
     return res
       .status(500)
-      .json({ error: "Internal Server Error", success: false })
+      .json({ error: "Internal Server Error Revoke", success: false })
   }
 }
 

@@ -26,7 +26,7 @@ export default withAuth(
         if (!success) return NextResponse.json({ error: "To many requests" })
         return NextResponse.next()
       } catch (error) {
-        return NextResponse.json({ error: "Internal Server Error" })
+        return NextResponse.json({ error: "Internal Server Error Middleware" })
       }
     }
 

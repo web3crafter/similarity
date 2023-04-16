@@ -51,7 +51,7 @@ const handler = async (
       })
     }
     return res.status(500).json({
-      error: "Internal Server Error",
+      error: "Internal Server Error Create",
       createdApiKey: null,
     })
   }

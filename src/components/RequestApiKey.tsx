@@ -9,10 +9,12 @@ import LargeHeading from "@/ui/LargeHeading"
 import Paragraph from "@/ui/Paragraph"
 import { Input } from "@/ui/Input"
 import Button from "./ui/Button"
+import { useRouter } from "next/navigation"
 
 const RequestApiKey: FC = () => {
   const [isCreating, setIsCreating] = useState<boolean>(false)
   const [apiKey, setApiKey] = useState<string | null>(null)
+  const router = useRouter()
 
   const createNewApiKey = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -27,7 +29,7 @@ const RequestApiKey: FC = () => {
       if (error instanceof Error) {
         toast({
           title: "Error",
-          message: error.message,
+          message: `${error.message} Try refresh the page`,
           type: "error",
         })
 
@@ -62,8 +64,11 @@ const RequestApiKey: FC = () => {
           {apiKey ? (
             <CopyButton
               className="absolute inset-y-0 right-0 animate-in fade-in duration-300"
-              valueToCopy={apiKey}
               type="button"
+              onClick={() => {
+                router.refresh()
+              }}
+              valueToCopy={apiKey}
             />
           ) : null}
           <Input

@@ -1,6 +1,5 @@
 import { getServerSession } from "next-auth"
 import Link from "next/link"
-import { FC } from "react"
 import { buttonVariants } from "@/ui/Button"
 import SignInButton from "@/components/ui/SignInButton"
 import SignOutButton from "@/components/ui/SignOutButton"
@@ -24,7 +23,6 @@ const Navbar = async () => {
         <div className="md:hidden">
           <ThemeToggle />
         </div>
-
         <div className="hidden md:flex gap-4">
           <ThemeToggle />
           <Link
@@ -41,6 +39,12 @@ const Navbar = async () => {
                 href={"/dashboard"}
               >
                 Dashboard
+              </Link>
+              <Link
+                className={buttonVariants({ variant: "ghost" })}
+                href={"/check-similarity"}
+              >
+                Check Similarity
               </Link>
               <SignOutButton />
             </>

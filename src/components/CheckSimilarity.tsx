@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, useEffect, useState } from "react"
+import { FC, useState } from "react"
 import { Input } from "./ui/Input"
 import Paragraph from "./ui/Paragraph"
 import Button from "./ui/Button"
@@ -14,6 +14,7 @@ const CheckSimilarity: FC = () => {
   const [text2, setText2] = useState<string>("")
   const [apiKey, setApiKey] = useState<string>("")
   const [similarity, setSimilarity] = useState()
+  const [similarityColor, setSimilarityColor] = useState("green-500")
 
   const makingRequest = async (
     text1: string,
@@ -34,6 +35,7 @@ const CheckSimilarity: FC = () => {
           },
         }
       )
+
       const similarityData = data.similarity.toString().slice(0, 4)
       setSimilarity(similarityData)
     } catch (error) {
@@ -63,9 +65,20 @@ const CheckSimilarity: FC = () => {
       </div>
 
       {similarity ? (
-        <div className="self-center">
+        <div className="self-center mt-5">
           <Paragraph className="self-center">Similarity:</Paragraph>
-          <Input readOnly disabled value={similarity} />
+          <Input
+            className={`${
+              similarity <= 0.35
+                ? "bg-red-500"
+                : similarity > 0.35 && similarity <= 0.65
+                ? "bg-orange-400"
+                : "bg-green-900"
+            } w-24`}
+            readOnly
+            disabled
+            value={similarity}
+          />
         </div>
       ) : null}
 

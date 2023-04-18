@@ -73,7 +73,6 @@ const RequestApiKey: FC = () => {
           ) : null}
           <Input
             readOnly
-            disabled
             value={apiKey ?? ""}
             placeholder="Request an API Key to display here!"
           />

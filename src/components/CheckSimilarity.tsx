@@ -65,7 +65,7 @@ const CheckSimilarity: FC = () => {
       {similarity ? (
         <div className="self-center">
           <Paragraph className="self-center">Similarity:</Paragraph>
-          <Input readOnly value={similarity} />
+          <Input readOnly disabled value={similarity} />
         </div>
       ) : null}
 

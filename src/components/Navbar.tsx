@@ -26,42 +26,48 @@ const Navbar = async () => {
           Text Similarity 1.0
         </Link>
 
-        <div className="md:hidden">
+        {/* <div className="md:hidden flex justify-between w-1/2"> */}
+        <div className="md:hidden flex gap-2">
           <ThemeToggle />
-        </div>
-
-        <div className="md:hidden">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost">Test</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>
-                <Link
-                  href="/documentation"
-                  className={buttonVariants({ variant: "ghost" })}
-                >
-                  Documentation
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link
-                  className={buttonVariants({ variant: "ghost" })}
-                  href={"/dashboard"}
-                >
-                  Dashboard
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link
-                  className={buttonVariants({ variant: "ghost" })}
-                  href={"/check-similarity"}
-                >
-                  Check Similarity
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {session ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost">Menu</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <Link
+                    href="/documentation"
+                    className={buttonVariants({ variant: "link" })}
+                  >
+                    Documentation
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link
+                    className={buttonVariants({ variant: "link" })}
+                    href={"/dashboard"}
+                  >
+                    Dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link
+                    className={buttonVariants({ variant: "link" })}
+                    href={"/check-similarity"}
+                  >
+                    Check Similarity
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="justify-center">
+                  <SignOutButton />
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <SignInButton />
+          )}
+          {/* <SignOutButton /> */}
         </div>
 
         <div className="hidden md:flex gap-4">

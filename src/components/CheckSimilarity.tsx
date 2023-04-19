@@ -70,11 +70,11 @@ const CheckSimilarity: FC = () => {
           <Input
             className={`${
               similarity <= 0.35
-                ? "bg-red-500"
+                ? "dark:text-red-600 text-red-600"
                 : similarity > 0.35 && similarity <= 0.65
-                ? "bg-orange-400"
-                : "bg-green-900"
-            } w-24`}
+                ? "dark:text-yellow-600 text-yellow-500"
+                : "dark:text-green-600 text-green-600"
+            } w-24 font-bold disabled:opacity-100`}
             readOnly
             disabled
             value={similarity}
@@ -82,7 +82,27 @@ const CheckSimilarity: FC = () => {
         </div>
       ) : null}
 
-      <div className="grid grid-cols-2 grid-rows-1 gap-6  ">
+      <div className="w-3/4 flex flex-col md:flex-row md:justify-between self-center gap-6 mt-10">
+        <div className="flex flex-col ">
+          <Paragraph className="self-center">Text 1:</Paragraph>
+          <TextArea
+            className="h-28 w-96 self-center"
+            placeholder="Input first text"
+            onChange={(e) => setText1(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <Paragraph className="self-center">Text 2:</Paragraph>
+          <TextArea
+            className="h-28 w-96 self-center"
+            placeholder="Input second text"
+            onChange={(e) => setText2(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* <div className="grid grid-cols-2 grid-rows-1 gap-6  ">
         <div className=" row-span-1 col-span-1 flex flex-col mt-10">
           <Paragraph className="self-center mt-5">Text 1:</Paragraph>
           <TextArea
@@ -100,7 +120,7 @@ const CheckSimilarity: FC = () => {
             onChange={(e) => setText2(e.target.value)}
           />
         </div>
-      </div>
+      </div> */}
 
       <Button
         className="self-center mt-5"

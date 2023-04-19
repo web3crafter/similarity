@@ -80,7 +80,7 @@ const ApiKeyOptions: FC<ApiKeyOptionsProps> = ({ apiKeyKey }) => {
 
             toast({
               title: "Copied",
-              message: " API KEy copied to clipboard",
+              message: " API Key copied to clipboard",
               type: "success",
             })
           }}
